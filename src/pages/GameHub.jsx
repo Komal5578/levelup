@@ -25,11 +25,11 @@ const GameHub = () => {
     const updateLeaderboard = () => {
       setIsUpdating(true);
       const dummyLeaderboard = [
-        { name: 'Alex Chen', game: 'Market Predictor', score: 95, totalXP: 950, gamesCompleted: 6, avgScore: 92 },
-        { name: 'Jordan Smith', game: 'Debt Destroyer', score: 88, totalXP: 880, gamesCompleted: 6, avgScore: 85 },
-        { name: 'Taylor Brown', game: 'Credit Quest', score: 91, totalXP: 910, gamesCompleted: 6, avgScore: 88 },
-        { name: 'Casey Davis', game: 'Savings Sprint', score: 86, totalXP: 860, gamesCompleted: 5, avgScore: 83 },
-        { name: 'Morgan Wilson', game: 'Needs vs Wants', score: 89, totalXP: 890, gamesCompleted: 6, avgScore: 87 }
+        { name: 'Sakshi Patel', game: 'Market Predictor', score: 95, totalXP: 950, gamesCompleted: 6, avgScore: 92 },
+        { name: 'Minal More', game: 'Debt Destroyer', score: 88, totalXP: 880, gamesCompleted: 6, avgScore: 85 },
+        { name: 'Rohan Singh', game: 'Credit Quest', score: 91, totalXP: 910, gamesCompleted: 6, avgScore: 88 },
+        { name: 'Sonal Mehta', game: 'Savings Sprint', score: 86, totalXP: 860, gamesCompleted: 5, avgScore: 83 },
+        { name: ' Kristina Mathew ', game: 'Needs vs Wants', score: 89, totalXP: 890, gamesCompleted: 6, avgScore: 87 }
       ];
       const storageData = JSON.parse(localStorage.getItem('leaderboard') || '[]');
       // Combine real data with dummy data, then sort and take top 5
