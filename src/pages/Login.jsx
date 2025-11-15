@@ -64,25 +64,39 @@ const Login = () => {
     }
   };
   return (
-    <div className="h-screen bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center px-4">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-gradient-to-br from-[#74AA9C] to-transparent opacity-10 blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-gradient-to-tr from-[#74AA9C] to-transparent opacity-10 blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-br from-[#74AA9C] to-transparent opacity-5 blur-3xl"></div>
+    <div className="h-screen relative flex items-center justify-center px-4 overflow-hidden">
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src={backgroundVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Dark overlay for better readability */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900/85 via-blue-950/85 to-black/85"></div>
+
+      {/* Animated decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-gradient-to-br from-cyan-400 via-blue-500 to-transparent opacity-10 blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-gradient-to-tr from-blue-500 via-cyan-400 to-transparent opacity-10 blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
-      <div className="relative w-full max-w-md">
+      <div className="relative w-full max-w-md z-10">
         {/* Main card */}
-        <div className="bg-black/60 backdrop-blur-xl border border-gray-800/50 rounded-2xl shadow-2xl p-6 space-y-4">
+        <div className="bg-gradient-to-br from-gray-900/80 via-blue-950/80 to-gray-900/80 backdrop-blur-2xl border border-cyan-500/30 rounded-2xl shadow-2xl shadow-cyan-500/20 p-8 space-y-5">
           {/* Header */}
-          <div className="text-center space-y-2">
-            <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#74AA9C] to-[#5a8a7e] rounded-xl mb-2">
-              <LogIn className="w-6 h-6 text-white" />
+          <div className="text-center space-y-3">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-cyan-400 via-blue-500 to-blue-600 rounded-2xl mb-3 shadow-lg shadow-cyan-500/50 animate-pulse">
+              <Sparkles className="w-8 h-8 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-white mb-1">Sign in</h2>
-              <p className="text-sm text-gray-400">Welcome back to LevelUpFi</p>
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-blue-500 bg-clip-text text-transparent mb-2">Welcome back</h1>
+              <p className="text-sm text-gray-300">Sign in to continue your journey with LevelUpFi</p>
             </div>
           </div>
 
