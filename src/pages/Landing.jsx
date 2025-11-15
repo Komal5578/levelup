@@ -6,6 +6,7 @@ import loadingBar from '../assets/Loading bar.json';
 import loadingVideo from '../assets/loading-video.mp4';
 import { TrendingUp, ShoppingBag, Target, CreditCard, Sparkles, Zap, Trophy, ArrowRight, Play, CheckCircle } from 'lucide-react';
 import BlurText from '../components/BlurText';
+import backgroundLanding from "../assets/background-landing.mp4";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -150,7 +151,7 @@ const Landing = () => {
           playsInline
           className="w-full h-full object-cover opacity-40"
         >
-          <source src="/src/assets/background-landing.mp4" type="video/mp4" />
+           <source src={backgroundLanding} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-slate-900/60 to-slate-900/80"></div>
       </div>
