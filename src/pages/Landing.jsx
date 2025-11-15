@@ -4,8 +4,10 @@ import Lottie from 'lottie-react';
 import moneyTransfer from '../assets/Money Transfer.json';
 import loadingBar from '../assets/Loading bar.json';
 import loadingVideo from '../assets/loading-video.mp4';
-import { TrendingUp, ShoppingBag, Target, CreditCard, Sparkles, Zap, Trophy, ArrowRight, Play, CheckCircle } from 'lucide-react';
+import backgroundVideo from '../assets/background-landing.mp4';
+import { TrendingUp, ShoppingBag, Target, CreditCard, Sparkles, Zap, Trophy, ArrowRight, Play, CheckCircle, PiggyBank, Lightbulb } from 'lucide-react';
 import BlurText from '../components/BlurText';
+import TiltedCard from '../components/TiltedCard';
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -15,7 +17,6 @@ const Landing = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-      // Trigger features animation after loading completes
       setTimeout(() => setShowFeatures(true), 300);
     }, 5500);
     return () => clearTimeout(timer);
@@ -32,38 +33,58 @@ const Landing = () => {
   const games = [
     {
       emoji: "📈",
-      icon: <TrendingUp className="w-8 h-8" />,
       name: "Market Predictor",
       tagline: "Up or Down?",
-      color: "from-emerald-500 to-teal-600"
+      description: "Predict stock market trends and master the art of timing",
+      gradientStart: "10b981",
+      gradientEnd: "14b8a6"
     },
     {
-      emoji: "🛍",
-      icon: <ShoppingBag className="w-8 h-8" />,
+      emoji: "🛍️",
       name: "Needs vs Wants",
       tagline: "Budget Master",
-      color: "from-purple-500 to-pink-600"
+      description: "Learn to distinguish essential expenses from impulse buys",
+      gradientStart: "a855f7",
+      gradientEnd: "ec4899"
     },
     {
       emoji: "⏳",
-      icon: <Target className="w-8 h-8" />,
       name: "Compound Goal",
       tagline: "Time Traveler",
-      color: "from-amber-500 to-orange-600"
+      description: "Harness the power of compound interest over time",
+      gradientStart: "f59e0b",
+      gradientEnd: "f97316"
     },
     {
       emoji: "💳",
-      icon: <CreditCard className="w-8 h-8" />,
       name: "Debt Destroyer",
       tagline: "Freedom Fighter",
-      color: "from-red-500 to-rose-600"
+      description: "Master debt payoff strategies and break free",
+      gradientStart: "ef4444",
+      gradientEnd: "f43f5e"
+    },
+    {
+      emoji: "🐷",
+      name: "Savings Sprint",
+      tagline: "Goal Crusher",
+      description: "Build emergency funds and achieve savings milestones",
+      gradientStart: "3b82f6",
+      gradientEnd: "6366f1"
+    },
+    {
+      emoji: "💡",
+      name: "Smart Spender",
+      tagline: "Decision Maker",
+      description: "Make informed purchasing decisions every time",
+      gradientStart: "eab308",
+      gradientEnd: "d97706"
     }
   ];
 
   const features = [
     {
       icon: <Play className="w-10 h-10" />,
-      title: "4 Fun Games",
+      title: "6 Fun Games",
       description: "Real-world money scenarios disguised as addictive challenges"
     },
     {
@@ -78,13 +99,11 @@ const Landing = () => {
     }
   ];
 
-  // Show loading animation
   if (isLoading) {
     const letters = "LevelUpFi".split("");
     
     return (
       <div className="relative flex flex-col items-center justify-center h-screen overflow-hidden">
-        {/* Background Video */}
         <video 
           autoPlay 
           loop 
@@ -96,12 +115,9 @@ const Landing = () => {
           Your browser does not support the video tag.
         </video>
         
-        {/* Overlay to make content more visible */}
         <div className="absolute inset-0 bg-black/30"></div>
         
-        {/* Content on top of video */}
         <div className="relative z-10 flex flex-col items-center justify-center">
-          {/* Animated LevelUpFi Title */}
           <div className="mb-16">
             <h1 className="text-6xl md:text-7xl font-extrabold drop-shadow-2xl pb-4">
               {letters.map((letter, index) => (
@@ -120,11 +136,9 @@ const Landing = () => {
             </h1>
           </div>
           
-          {/* Lottie Animations */}
           <Lottie animationData={moneyTransfer} loop={true} className="w-72 h-72 -mb-8" />
           <Lottie animationData={loadingBar} loop={true} className="w-64 h-12" />
           
-          {/* Blur Text */}
           <BlurText
             text="LEVEL UP YOUR FINANCIAL JOURNEY....."
             delay={100}
@@ -138,10 +152,8 @@ const Landing = () => {
     );
   }
 
-  // Landing Page Content
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white overflow-hidden">
-      {/* Background Video */}
       <div className="fixed inset-0 z-0">
         <video 
           autoPlay 
@@ -150,17 +162,15 @@ const Landing = () => {
           playsInline
           className="w-full h-full object-cover opacity-40"
         >
-          <source src="/src/assets/background-landing.mp4" type="video/mp4" />
+          <source src={backgroundVideo} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-slate-900/60 to-slate-900/80"></div>
       </div>
 
-      {/* Content */}
       <div className="relative z-10">
         {/* Hero Section */}
         <section className="min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-32">
           <div className="text-center max-w-5xl mx-auto space-y-8 animate-fade-in">
-            {/* Welcome Message */}
             <div className="flex items-center justify-center gap-3 mb-4">
               <Sparkles className="w-8 h-8 text-yellow-400 animate-pulse" />
               <h2 className="text-2xl md:text-3xl font-semibold text-cyan-400">
@@ -169,7 +179,6 @@ const Landing = () => {
               <Sparkles className="w-8 h-8 text-yellow-400 animate-pulse" />
             </div>
 
-            {/* Main Headline */}
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black leading-tight">
               <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient">
                 Master Money
@@ -178,12 +187,10 @@ const Landing = () => {
               <span className="text-white">Through Games</span>
             </h1>
 
-            {/* Subheadline */}
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Level up your financial IQ with 4 addictive games that teach real-world money skills. No textbooks. Just play.
+              Level up your financial IQ with 6 addictive games that teach real-world money skills. No textbooks. Just play.
             </p>
 
-            {/* CTA Button */}
             <button 
               onClick={handleGetStarted}
               className="group relative mt-8 px-12 py-5 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-xl font-bold shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105 transition-all duration-300"
@@ -195,7 +202,6 @@ const Landing = () => {
               <div className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-20 transition-opacity"></div>
             </button>
 
-            {/* Quick Stats */}
             <div className="flex items-center justify-center gap-8 mt-12 text-sm text-gray-400">
               <div className="flex items-center gap-2">
                 <CheckCircle className="w-5 h-5 text-green-400" />
@@ -212,7 +218,6 @@ const Landing = () => {
             </div>
           </div>
 
-          {/* Scroll Indicator */}
           <div className="absolute bottom-10 animate-bounce">
             <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
               <div className="w-1.5 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
@@ -245,42 +250,44 @@ const Landing = () => {
           </div>
         </section>
 
-        {/* Game Preview Section */}
+        {/* Game Preview Section with TiltedCard */}
         <section className="py-24 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-4">
                 Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">Game Collection</span>
               </h2>
-              <p className="text-xl text-gray-400">Four powerful simulations. One financial genius. You.</p>
+              <p className="text-xl text-gray-400">Six powerful simulations. One financial genius. You.</p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 justify-items-center">
               {games.map((game, index) => (
-                <div 
+                <TiltedCard
                   key={index}
-                  className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg border border-white/20 rounded-3xl p-8 hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden"
-                >
-                  {/* Gradient overlay on hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${game.color} opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-3xl`}></div>
-                  
-                  <div className="relative z-10">
-                    <div className="text-6xl mb-4">{game.emoji}</div>
-                    <div className="text-white/80 mb-3">{game.icon}</div>
-                    <h3 className="text-xl font-bold mb-2">{game.name}</h3>
-                    <p className="text-sm text-gray-400">{game.tagline}</p>
-                    
-                    {/* Coming soon badge */}
-                    <div className="mt-4 inline-block px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-xs text-purple-300">
-                      Click to Play →
+                  imageSrc={`data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='420' viewBox='0 0 320 420'%3E%3Cdefs%3E%3ClinearGradient id='grad${index}' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23${game.gradientStart};stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23${game.gradientEnd};stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='320' height='420' rx='24' fill='url(%23grad${index})'/%3E%3Ctext x='160' y='180' font-size='100' text-anchor='middle' fill='white' opacity='0.95'%3E${game.emoji}%3C/text%3E%3Ctext x='160' y='290' font-size='32' font-weight='bold' text-anchor='middle' fill='white'%3E${game.name}%3C/text%3E%3Ctext x='160' y='330' font-size='20' text-anchor='middle' fill='rgba(255,255,255,0.85)'%3E${game.tagline}%3C/text%3E%3C/svg%3E`}
+                  altText={game.name}
+                  captionText={game.name}
+                  containerHeight="420px"
+                  containerWidth="320px"
+                  imageHeight="420px"
+                  imageWidth="320px"
+                  rotateAmplitude={12}
+                  scaleOnHover={1.08}
+                  showMobileWarning={false}
+                  showTooltip={true}
+                  displayOverlayContent={true}
+                  overlayContent={
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col items-center justify-end p-8 rounded-3xl">
+                      <div className="text-7xl mb-4 animate-bounce">{game.emoji}</div>
+                      <h3 className="text-3xl font-black mb-2 text-white drop-shadow-lg">{game.name}</h3>
+                      <p className="text-lg text-cyan-300 font-semibold mb-3">{game.tagline}</p>
+                      <p className="text-sm text-white/90 mb-5 text-center max-w-[280px]">{game.description}</p>
+                      <button className="px-6 py-3 bg-white/20 backdrop-blur-md border-2 border-white/40 rounded-full text-white font-bold text-sm hover:bg-white/30 hover:scale-105 transition-all duration-300 shadow-lg">
+                        Play Now →
+                      </button>
                     </div>
-                  </div>
-
-                  {/* Shine effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                  </div>
-                </div>
+                  }
+                />
               ))}
             </div>
           </div>
@@ -305,7 +312,6 @@ const Landing = () => {
               </span>
             </button>
 
-            {/* Trust indicators */}
             <div className="pt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
               <span>✓ Trusted by learners</span>
               <span>✓ Real financial principles</span>

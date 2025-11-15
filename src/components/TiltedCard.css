@@ -1,0 +1,85 @@
+/* TiltedCard.css */
+
+.tilted-card-figure {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.tilted-card-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.tilted-card-img {
+  display: block;
+  object-fit: cover;
+  border-radius: 24px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.tilted-card-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.tilted-card-caption {
+  position: absolute;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  color: white;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 20;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tilted-card-mobile-alert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 14px;
+  max-width: 280px;
+  z-index: 30;
+  display: none;
+}
+
+/* Show mobile warning on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .tilted-card-mobile-alert {
+    display: block;
+  }
+  
+  .tilted-card-inner {
+    transform: none !important;
+  }
+}
+
+/* Additional styling for overlay content */
+.tilted-card-overlay button {
+  transition: all 0.3s ease;
+}
+
+.tilted-card-overlay button:hover {
+  transform: scale(1.05);
+}
