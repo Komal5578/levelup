@@ -103,25 +103,25 @@ export default function CreditQuest() {
       question: "Your credit card limit is 5,000. What's the ideal balance to maintain?",
       options: [
         { 
-          text: "0 - never use it", 
+          text: "$0 - never use it", 
           impact: 5, 
           feedback: "⚠ Some usage is better to show activity.",
           correct: false
         },
         { 
-          text: "Under 1,500 (30% utilization)", 
+          text: "Under $1,500 (30% utilization)", 
           impact: 35, 
           feedback: "✅ Excellent! Under 30% utilization is ideal for your score.",
           correct: true
         },
         { 
-          text: "4,000 (80% utilization)", 
+          text: "$4,000 (80% utilization)", 
           impact: -35, 
           feedback: "❌ High utilization signals financial stress to lenders.",
           correct: false
         },
         { 
-          text: "5,000 (maxed out)", 
+          text: "$5,000 (maxed out)", 
           impact: -45, 
           feedback: "❌ Maxing out cards severely hurts your credit score.",
           correct: false
@@ -254,7 +254,7 @@ export default function CreditQuest() {
                 <div className="h-2 bg-white/10 rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300"
-                    style={{ width: `{progress}%` }}
+                    style={{ width: `${progress}%` }}
                   />
                 </div>
               </div>
@@ -277,7 +277,7 @@ export default function CreditQuest() {
                         creditScore >= 650 ? 'bg-yellow-500' :
                         creditScore >= 600 ? 'bg-orange-500' : 'bg-red-500'
                       }`}
-                      style={{ width: `{((creditScore - 300) / 550) * 100}%` }}
+                      style={{ width: `${((creditScore - 300) / 550) * 100}%` }}
                     />
                   </div>
                   <div className="flex justify-between text-xs text-gray-500 mt-2">

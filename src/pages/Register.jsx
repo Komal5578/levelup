@@ -43,10 +43,22 @@ const Register = () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
       
-      // Update display name
       await updateProfile(userCredential.user, {
         displayName: formData.name
       });
+      
+       localStorage.setItem(
+      "user",
+      JSON.stringify({
+        name: formData.name,
+        email: formData.email
+      })
+    );
+
+
+      // ⭐ THE ONLY FIX YOU NEEDED
+      await userCredential.user.reload();
+
 
       toast.success('Registration successful!');
       navigate('/dashboard');
@@ -105,7 +117,9 @@ const Register = () => {
               <Sparkles className="w-8 h-8 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-blue-500 bg-clip-text text-transparent mb-2">Create account</h1>
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-blue-500 bg-clip-text text-transparent mb-2">
+                Create account
+              </h1>
               <p className="text-sm text-gray-300">Join LevelUpFi and start your learning journey</p>
             </div>
           </div>
@@ -113,9 +127,7 @@ const Register = () => {
           {/* Form */}
           <form onSubmit={handleEmailRegister} className="space-y-4">
             <div className="space-y-2">
-              <label className="block text-xs font-medium text-cyan-300">
-                Full Name
-              </label>
+              <label className="block text-xs font-medium text-cyan-300">Full Name</label>
               <div className="relative group">
                 <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 transition-colors group-focus-within:text-cyan-400" />
                 <input
@@ -131,9 +143,7 @@ const Register = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="block text-xs font-medium text-cyan-300">
-                Email Address
-              </label>
+              <label className="block text-xs font-medium text-cyan-300">Email Address</label>
               <div className="relative group">
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 transition-colors group-focus-within:text-cyan-400" />
                 <input
@@ -149,9 +159,7 @@ const Register = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="block text-xs font-medium text-cyan-300">
-                Password
-              </label>
+              <label className="block text-xs font-medium text-cyan-300">Password</label>
               <div className="relative group">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 transition-colors group-focus-within:text-cyan-400" />
                 <input
@@ -175,9 +183,7 @@ const Register = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="block text-xs font-medium text-cyan-300">
-                Confirm Password
-              </label>
+              <label className="block text-xs font-medium text-cyan-300">Confirm Password</label>
               <div className="relative group">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 transition-colors group-focus-within:text-cyan-400" />
                 <input
@@ -224,7 +230,9 @@ const Register = () => {
               <div className="w-full border-t border-gray-700"></div>
             </div>
             <div className="relative flex justify-center text-xs">
-              <span className="px-4 bg-gradient-to-r from-gray-900 via-blue-950 to-gray-900 text-gray-400">Or continue with</span>
+              <span className="px-4 bg-gradient-to-r from-gray-900 via-blue-950 to-gray-900 text-gray-400">
+                Or continue with
+              </span>
             </div>
           </div>
 
