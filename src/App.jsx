@@ -3,6 +3,8 @@ import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import DebtDestroyer from './games/DebtDestroyer'
+import CreditQuest from './games/CreditQuest'
+import SavingsSprint from './games/SavingsSprint'
 
 import GameHub from './pages/GameHub'
 import MarketPredictor from './games/MarketPredictor'
@@ -24,6 +26,8 @@ function App() {
         <Route path="/game/market-predictor" element={<MarketPredictor />} />
         <Route path="/game/needs-vs-wants" element={<NeedsVsWants />} />
         <Route path="/game/time-traveler" element={<TimeTraveler />} />
+        <Route path="/game/credit-quest" element={<CreditQuest />} />
+        <Route path="/game/savings-sprint" element={<SavingsSprint />} />
         {/* Optional named dashboard route to avoid "No routes matched location \"/dashboard\"" warnings */}
         <Route path="/dashboard" element={<GameHub />} />
         {/* Fallback route to handle unknown locations */}
