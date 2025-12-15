@@ -5,7 +5,7 @@ import Register from './pages/Register'
 import DebtDestroyer from './games/DebtDestroyer'
 import CreditQuest from './games/CreditQuest'
 import SavingsSprint from './games/SavingsSprint'
-
+import ProtectedRoute from './components/ProtectedRoute'
 import GameHub from './pages/GameHub'
 import MarketPredictor from './games/MarketPredictor'
 import NeedsVsWants from './games/NeedsVsWants'
@@ -22,14 +22,22 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/game/debt-destroyer" element={<DebtDestroyer />} />
      
-        <Route path="/game-hub" element={<GameHub />} />
+        <Route path="/game-hub" element={
+          <ProtectedRoute>
+            <GameHub />
+          </ProtectedRoute>
+        } />
         <Route path="/game/market-predictor" element={<MarketPredictor />} />
         <Route path="/game/needs-vs-wants" element={<NeedsVsWants />} />
         <Route path="/game/time-traveler" element={<TimeTraveler />} />
         <Route path="/game/credit-quest" element={<CreditQuest />} />
         <Route path="/game/savings-sprint" element={<SavingsSprint />} />
-        {/* Optional named dashboard route to avoid "No routes matched location \"/dashboard\"" warnings */}
-        <Route path="/dashboard" element={<GameHub />} />
+        {/* Protected Dashboard Route */}
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <GameHub />
+          </ProtectedRoute>
+        } />
         {/* Fallback route to handle unknown locations */}
         <Route path="*" element={<Landing />} />
       </Routes>

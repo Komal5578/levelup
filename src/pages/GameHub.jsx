@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TrendingUp, ShoppingBag, Target, CreditCard, Trophy, User, LogOut, Clock, Zap } from 'lucide-react';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase.config';
 import gamehubVideo from '../assets/gamehub-background.mp4';
 
 
@@ -137,9 +139,17 @@ const GameHub = () => {
     navigate(game.route);
   };
 
-  const handleLogout = () => {
-    localStorage.clear();
-    navigate('/');
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      localStorage.clear();
+      navigate('/login');
+    } catch (error) {
+      console.error('Logout error:', error);
+      // Still clear localStorage and navigate even if Firebase signOut fails
+      localStorage.clear();
+      navigate('/login');
+    }
   };
 
   const handleLevelUpFiClick = () => {
